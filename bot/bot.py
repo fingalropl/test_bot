@@ -3,7 +3,7 @@ import os
 
 # import config
 import telebot 
-# from telebot import types 
+from telebot import types 
 from dotenv import load_dotenv
 
 load_dotenv()
