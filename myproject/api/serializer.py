@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from rest_framework.fields import SerializerMethodField
+# from rest_framework.fields import SerializerMethodField
 
-from models.models import Task
+from models.models import Task, Chat
 
 class TaskSerializer(serializers.ModelSerializer):
     # text=serializers.SerializerMethodField(read_only=True)
@@ -22,3 +22,9 @@ class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
         fields = ('text', 'answer')
+
+class ChatSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Chat
+        fields = ('__all__')
