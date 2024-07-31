@@ -28,3 +28,8 @@ class ChatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Chat
         fields = ('__all__')
+
+class CheckTokenSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Chat
+        fields = ('__all__')

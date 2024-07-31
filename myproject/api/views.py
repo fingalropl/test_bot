@@ -1,7 +1,7 @@
 from models.models import Task
 from models.models import Chat
-# from django_filters.rest_framework import DjangoFilterBackend
-from .serializer import TaskSerializer, ChatSerializer
+from django_filters.rest_framework import DjangoFilterBackend
+from .serializer import TaskSerializer, ChatSerializer, CheckTokenSerializer
 from rest_framework import filters
 from rest_framework import generics
 # from rest_framework.decorators import action
@@ -60,5 +60,11 @@ class TokenEdit(APIView):
         # else:
         return Response(status.HTTP_400_BAD_REQUEST)
 
+class CheckTokenView(generics.ListAPIView):
+    queryset = Chat.objects.all()
+    serializer_class = CheckTokenSerializer
+    filter_backends = [filters.SearchFilter]
+    # filterset_fields = ('task_text',) 
+    search_fields = ('=username', )
 
 # class ChatDetail(APIView):
