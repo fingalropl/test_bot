@@ -3,12 +3,14 @@ from rest_framework import viewsets
 from django_filters.rest_framework import DjangoFilterBackend
 from .serializer import TaskSerializer
 from rest_framework import filters
+from rest_framework import generics
 
-class TaskViewSet(viewsets.ModelViewSet):
+class TaskListView(generics.ListAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
     filter_backends = [filters.SearchFilter]
-    filterset_fields = ('text',) 
+    # filterset_fields = ('task_text',) 
+    search_fields = ('text', )
     # def get_queryset(self):
     #     user = self.request.user
     #     return user.accounts.all()
